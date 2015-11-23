@@ -426,7 +426,8 @@ void rhf_knn(int iDWin,       // Half size of patch
             for (int ii=0; ii < iChannels; ii++) delete[] fpODenoised[ii];
             delete[] fpODenoised;
             delete[] fTotalWeight;
-            
+            printf ("[%d%%]\r", y*100/(iHeight-1));
+            fflush (stdout);
         }//yloop end
     }//pragma end
     
@@ -482,6 +483,7 @@ void rhf(int iDWin,        // Half size of patch
 #pragma omp for schedule(dynamic) nowait
         
         for (int y=0; y < iHeight ; y++) {
+
             
             // auxiliary variable
             // denoised patch centered at a certain pixel
@@ -589,6 +591,8 @@ void rhf(int iDWin,        // Half size of patch
             for (int ii=0; ii < iChannels; ii++) delete[] fpODenoised[ii];
             delete[] fpODenoised;
             delete[] fTotalWeight;
+            printf ("[%d%%]\r", y*100/(iHeight-1));
+            fflush (stdout);
         }
     }
     
